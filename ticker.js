@@ -1,6 +1,6 @@
 /* global requestAnimationFrame */
 
-(function() {
+(function () {
 
   function Ticker (fn) {
 
