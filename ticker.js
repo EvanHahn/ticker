@@ -11,11 +11,10 @@
 
     function tick (t) {
       var dt = t - lastTime;
-      if (me.paused) {
+      if (me.paused)
         pausedFor += dt;
-      } else {
+      else
         fn(dt, t - pausedFor);
-      }
       lastTime = t;
       requestAnimationFrame(tick);
     }
@@ -24,10 +23,9 @@
 
   }
 
-  if (typeof module !== "undefined") {
+  if (typeof module !== "undefined")
     module.exports = Ticker;
-  } else {
+  else
     this.Ticker = Ticker;
-  }
 
 })();
