@@ -7,20 +7,20 @@
     var me = this;
 
     var lastTime = 0;
-    var pausedSum = 0;
+    var pausedFor = 0;
 
     function tick (t) {
       var dt = t - lastTime;
       if (me.paused) {
-        pausedSum += dt;
+        pausedFor += dt;
       } else {
-        fn(dt, t - pausedSum);
+        fn(dt, t - pausedFor);
       }
       lastTime = t;
       requestAnimationFrame(tick);
     }
 
-    tick(0, 0);
+    tick(0);
 
   }
 
