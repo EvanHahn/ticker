@@ -21,6 +21,7 @@ var looper = ticker(function(dt, t) {
 looper.speed = 2;   // twice as fast
 looper.speed = 0.5; // half as fast
 looper.speed = -1;  // go backwards!
+looper.speed = 0;   // paused
 looper.speed = 1;   // normal speed
 
 // change the function
