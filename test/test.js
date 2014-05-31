@@ -1,23 +1,23 @@
-/* global Ticker */
+/* global ticker */
 
 (function () {
 
   var $dt = document.getElementById("dt");
   var $t = document.getElementById("t");
-  var $start = document.getElementById("start");
-  var $pause = document.getElementById("pause");
+  var $speed = document.getElementById("speed");
+  var $speedValue = document.getElementById("speed-value");
 
-  var ticker = new Ticker(function (dt, t) {
-    $dt.innerHTML = dt;
-    $t.innerHTML = t;
-  });
+  var loop = ticker();
 
-  $start.onclick = function () {
-    ticker.paused = false;
-  };
+  loop.fn = function (dt, t) {
 
-  $pause.onclick = function () {
-    ticker.paused = true;
+    $dt.innerHTML = dt | 0;
+    $t.innerHTML = t | 0;
+
+    var speed = parseFloat($speed.value);
+    loop.speed = speed;
+    $speedValue.innerHTML = speed;
+
   };
 
 })();

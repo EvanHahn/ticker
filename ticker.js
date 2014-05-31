@@ -2,30 +2,38 @@
 
 (function () {
 
-  function Ticker (fn) {
+  function noop () {}
 
-    var me = this;
+  function ticker (fn) {
 
+    var result = {
+      speed: 1,
+      fn: fn || noop
+    };
+
+    var totalTime = 0;
     var lastTime = 0;
-    var pausedFor = 0;
 
     function tick (t) {
-      var dt = t - lastTime;
-      if (me.paused)
-        pausedFor += dt;
-      else
-        fn(dt, t - pausedFor);
+
+      var dt = (t - lastTime) * result.speed;
+      totalTime += dt;
       lastTime = t;
+
+      result.fn(dt, totalTime);
       requestAnimationFrame(tick);
+
     }
 
     tick(0);
 
+    return result;
+
   }
 
   if (typeof module !== "undefined")
-    module.exports = Ticker;
+    module.exports = ticker;
   else
-    this.Ticker = Ticker;
+    this.ticker = ticker;
 
 })();
