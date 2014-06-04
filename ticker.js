@@ -12,9 +12,11 @@
     };
 
     var totalTime = 0;
-    var lastTime = 0;
+    var lastTime;
 
     function tick (t) {
+
+      lastTime || (lastTime = t);
 
       var dt = (t - lastTime) * result.speed;
       totalTime += dt;
@@ -25,7 +27,7 @@
 
     }
 
-    tick(0);
+    requestAnimationFrame(tick);
 
     return result;
 
